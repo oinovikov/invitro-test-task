@@ -22,7 +22,6 @@ function App() {
     // чтобы визуально показать процесс запроса.
     setTimeout(() => {
       ping.create(data => {
-        console.log('data from button component', data);
         dispatch({
           type: 'unshift log',
           data,
