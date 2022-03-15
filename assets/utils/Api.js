@@ -8,14 +8,38 @@ export default class Api {
    */
   #resource;
 
+  /**
+   * @param {string} resource
+   */
   constructor(resource) {
     this.#resource = resource;
   }
 
+  /**
+   * Sends request to resource
+   * and returns response promise.
+   *
+   * @param {Function} resolve
+   *
+   * @param {Function} reject
+   *
+   * @returns Promise
+   */
   create(resolve, reject) {
     return this.#sendRequest('post', resolve, reject)
   }
 
+  /**
+   * API request factory.
+   *
+   * @param {string} method
+   *
+   * @param {Function} resolve
+   *
+   * @param {Function} reject
+   *
+   * @returns Promise
+   */
   #sendRequest(method, resolve = null, reject = null) {
     if (resolve && typeof resolve !== 'function') {
         throw new Error('First argument must be a function.');
