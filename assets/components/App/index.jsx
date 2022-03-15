@@ -44,7 +44,7 @@ function App() {
             message={item.message}
             entity={item.entity}
             onAnimationEnd={() => dispatch({ type: 'pop log' })}
-            key={item.entity.created_at}
+            key={item.entity.id}
           />
         ))}
       </div>
