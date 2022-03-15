@@ -22,55 +22,42 @@ class LogRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param Log $entity
+     *
+     * @param bool $flush
+     *
      * @throws ORMException
+     *
      * @throws OptimisticLockException
+     *
+     * @return void
      */
     public function add(Log $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
+
         if ($flush) {
             $this->_em->flush();
         }
     }
 
     /**
+     * @param Log $entity
+     *
+     * @param bool $flush
+     *
      * @throws ORMException
+     *
      * @throws OptimisticLockException
+     *
+     * @return void
      */
     public function remove(Log $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
+
         if ($flush) {
             $this->_em->flush();
         }
     }
-
-    // /**
-    //  * @return Log[] Returns an array of Log objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Log
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

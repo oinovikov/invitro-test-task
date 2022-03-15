@@ -1,0 +1,76 @@
+@use 'sass:math';
+
+.button {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  // width: 100%;
+  // max-width: 120px;
+  height: 48px;
+  padding: 0 24px;
+  margin: 0;
+  border: none;
+  border-radius: 48px;
+  outline: none;
+  margin: 0;
+  background-color: #ff00aa;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+
+  &::before {
+    $size: 24px;
+
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: $size;
+    height: $size;
+    border: 3px solid #fff;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-radius: 50%;
+    padding: 0;
+    margin: (-1 * math.div($size, 2)) 0 0 (-1 * math.div($size, 2));
+    background: none;
+    animation: button-loader .96s linear 0s infinite;
+
+    @keyframes button-loader {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(359.9deg);
+      }
+    }
+  }
+
+  &_loading {
+    opacity: .5;
+    cursor: wait;
+
+    &::before {
+      content: '';
+    }
+
+    svg {
+      display: none;
+    }
+  }
+
+  svg {
+    position: relative;
+    flex: 0 0 auto;
+    display: block;
+    margin: auto;
+
+    path {
+      // fill: rgba(#000, .8);
+      fill: #fff;
+    }
+  }
+}
