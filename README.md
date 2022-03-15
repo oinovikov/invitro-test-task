@@ -33,3 +33,42 @@ Symfony 6.x (или можно 5)
 2. Используя PHPUnit, написать тест приложения (тестируем api)
 
 Результат выполнения задания предоставить в виде ссылки на публичный репозиторий.
+
+---
+
+## Запуск
+
+### Клонировать репозиторий
+```zsh
+> git clone git@github.com:oinovikov/invitro-test-task.git
+```
+
+### Изменить конфигурацию подключения к БД в ```.env``` файле (константа ```DATABASE_URL```);
+
+### Выполнить первичную инициализацию приложения
+```zsh
+> composer install
+> npm i
+> npm run build
+> php bin/console doctrine:database:create
+> php bin/console doctrine:migrations:migrate
+```
+
+### Запустить локальный сервер
+```
+> symfony server:start
+```
+
+## Тесты
+
+### Первичная инициализация
+```zsh
+> php bin/console --env=test doctrine:database:create
+> php bin/console --env=test doctrine:schema:create
+> php bin/console --env=test doctrine:fixtures:load
+```
+
+### Выполнение
+```zsh
+> php ./vendor/bin/phpunit tests/PingControllerTest.php
+```
